@@ -1,12 +1,11 @@
 import axios from "axios";
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 export const login = async (
   username: string,
   password: string
 ): Promise<string> => {
   const response = await axios.post(
-    `${API_BASE_URL}/auth/login`,
+    `/api/v1/auth/login`,
     {
       username,
       password,
@@ -20,12 +19,12 @@ export const register = async (
   username: string,
   password: string
 ): Promise<void> => {
-  await axios.post(`${API_BASE_URL}/auth/register`, { username, password });
+  await axios.post(`/api/v1/auth/register`, { username, password });
 };
 
 export const refreshAccessToken = async (): Promise<string> => {
   const response = await axios.post(
-    `${API_BASE_URL}/auth/refresh`,
+    `/api/v1/auth/refresh`,
     {},
     { withCredentials: true }
   );
