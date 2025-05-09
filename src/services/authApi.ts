@@ -1,11 +1,13 @@
 import axios from "axios";
 
+const AUTH_PATH = "/api/v1/auth";
+
 export const login = async (
   username: string,
   password: string
 ): Promise<string> => {
   const response = await axios.post(
-    `/api/v1/auth/login`,
+    `${AUTH_PATH}/login`,
     {
       username,
       password,
@@ -19,12 +21,12 @@ export const register = async (
   username: string,
   password: string
 ): Promise<void> => {
-  await axios.post(`/api/v1/auth/register`, { username, password });
+  await axios.post(`${AUTH_PATH}/register`, { username, password });
 };
 
 export const refreshAccessToken = async (): Promise<string> => {
   const response = await axios.post(
-    `/api/v1/auth/refresh`,
+    `${AUTH_PATH}/refresh`,
     {},
     { withCredentials: true }
   );
