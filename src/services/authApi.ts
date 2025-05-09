@@ -20,8 +20,17 @@ export const login = async (
 export const register = async (
   username: string,
   password: string
-): Promise<void> => {
-  await axios.post(`${AUTH_PATH}/register`, { username, password });
+): Promise<string> => {
+  const response = await axios.post(
+    `${AUTH_PATH}/register`,
+    {
+      username,
+      password,
+    },
+    { withCredentials: true }
+  );
+
+  return response.data.accessToken;
 };
 
 export const refreshAccessToken = async (): Promise<string> => {
