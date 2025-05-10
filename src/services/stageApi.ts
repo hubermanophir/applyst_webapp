@@ -16,3 +16,24 @@ export const getStages = async (
 
   return response.data;
 };
+
+export const createStage = async (
+  accessToken: string,
+  { name, position }: { name: string; position: number }
+): Promise<Stage> => {
+  const response = await axios.post(
+    `${BASE_URL}`,
+    {
+      name,
+      position,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
+  return response.data;
+};

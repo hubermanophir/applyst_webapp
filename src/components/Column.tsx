@@ -1,3 +1,4 @@
+import React from "react";
 import type { Job, Stage } from "../types/types";
 
 type ColumnProps = {
@@ -5,8 +6,10 @@ type ColumnProps = {
   jobs: Job[];
 };
 
-import React from "react";
-
-export const Column = () => {
-  return <div></div>;
+export const Column = ({ stage, jobs }: ColumnProps) => {
+  return (
+    <div>
+      {stage.id} {jobs && jobs.length ? jobs[0].company_name : 0}
+    </div>
+  );
 };
