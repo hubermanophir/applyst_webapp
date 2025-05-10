@@ -10,7 +10,9 @@ export const Home = () => {
   const [stages, setStages] = useState<Stage[] | null>(null);
   const [jobs, setJobs] = useState<Job[] | null>(null);
   const jobsByStage: { [stage_id: string]: Job[] } = useMemo(() => {
-    return groupBy(jobs, (job) => job.stage_id);
+    const map = groupBy(jobs, (job) => job.stage_id);
+    console.log({ map });
+    return map;
   }, [jobs]);
 
   const [accessToken] = useAuth();
@@ -22,7 +24,7 @@ export const Home = () => {
           getStages(accessToken),
           getJobs(accessToken),
         ]);
-        console.log({ stageData });
+        console.log({ stageData, jobData });
         setStages(stageData);
         setJobs(jobData);
       })();

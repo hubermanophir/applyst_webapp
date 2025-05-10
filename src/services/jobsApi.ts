@@ -12,7 +12,7 @@ export const getJobs = async (accessToken: string): Promise<Job[]> => {
     },
   });
 
-  return response.data;
+  return response.data.jobs;
 };
 
 export const createJob = async (
@@ -37,7 +37,7 @@ export const createJob = async (
     }
   );
 
-  return response.data;
+  return response.data.jobs;
 };
 export const updateJob = async (
   accessToken: string,
@@ -69,5 +69,5 @@ export const updateJob = async (
     }
   );
 
-  return response.data;
+  return response.data.job;
 };

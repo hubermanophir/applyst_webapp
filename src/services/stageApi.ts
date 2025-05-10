@@ -14,7 +14,7 @@ export const getStages = async (
     },
   });
 
-  return response.data;
+  return response.data.stages;
 };
 
 export const createStage = async (
@@ -35,5 +35,5 @@ export const createStage = async (
     }
   );
 
-  return response.data;
+  return response.data.stage;
 };
